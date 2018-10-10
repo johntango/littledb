@@ -15,6 +15,10 @@ app.use(cors());
 
 // init the data store
 db.defaults({ posts: []}).write();
+app.post('/payload', function(req,res){
+    push = JSON.parse(req.body.read);
+    res.send("I got some JSON:"+push);
+});
 
 // list posts
 app.get('/data', function(req, res){     
