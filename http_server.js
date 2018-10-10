@@ -25,7 +25,7 @@ app.post('/payload', function(req,res){
 app.get('/data', function(req, res){     
 
     res.send(db.get('posts').value());
-
+    console.write('Hello from server');
 });
 
 // ----------------------------------------------------
