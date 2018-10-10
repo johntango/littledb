@@ -16,9 +16,9 @@ app.use(cors());
 // init the data store
 db.defaults({ posts: []}).write();
 app.post('/payload', function(req,res){
-    push = JSON.parse(req.body.read);
-    res.send("got some JSON:"+push);
-    console.write("got a payload");
+    var mes = JSON.parse(req.body);
+    //res.send("got some JSON:"+mes);
+    console.write("got a payload"+mes);
 });
 
 // list posts
