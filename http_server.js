@@ -17,7 +17,7 @@ app.use(cors());
 db.defaults({ posts: []}).write();
 app.post('/payload', function(req,res){
     push = JSON.parse(req.body.read);
-    res.send("I got some JSON:"+push);
+    res.send("got some JSON:"+push);
 });
 
 // list posts
