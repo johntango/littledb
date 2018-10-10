@@ -18,7 +18,7 @@ db.defaults({ posts: []}).write();
 app.post('/payload', function(req,res){
     var mes = JSON.parse(req.body);
     //res.send("got some JSON:"+mes);
-    console.write("got a payload"+mes);
+    console.log("got a payload"+mes);
 });
 
 // list posts
@@ -77,5 +77,5 @@ app.get('/delete/:id/', function(req, res){
 // start server
 // -----------------------
 app.listen(3000, function(){
-    console.log('Running on port 3000');
+    console.log('I Running on port 3000');
 });
