@@ -4,10 +4,15 @@ var low     = require('lowdb');
 var fs      = require('lowdb/adapters/FileSync');
 var adapter = new fs('db.json');
 var db      = low(adapter);
-
+var bodyParser = require('body-parser');
+// configure express to catch Webhooks POST from GitHub
 // configure express to serve static files from public directory
 // ------------------------------------------------------------------
+
+
 app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
 
 // allow Cross-Origin Resource Sharing (CORS)
 var cors = require('cors');
@@ -17,9 +22,8 @@ app.use(cors());
 db.defaults({ posts: []}).write();
 
 app.post('/payload', function(req,res){
-    var mes = req.body;
-    //res.send("got some JSON:"+mes);
-    console.log("got a payload "+JSON.stringify(mes));
+    var data = req.body;
+    console.log("got a GitHub payload \n"+JSON.stringify(data));
     res.status(200);
     res.send();
 });
